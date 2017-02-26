@@ -9,7 +9,7 @@ $users = [
     ],
     'admin' => [
         'password' => 'password',
-        'email' => 'user@example.com',
+        'email' => 'user1@example.com',
     ],
 ];
 

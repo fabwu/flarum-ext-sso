@@ -3,10 +3,24 @@
 namespace Wuethrich44\SSO\Listener;
 
 use Flarum\Event\UserLoggedOut;
+use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class AddLogoutRedirect
 {
+    /**
+     * @var SettingsRepositoryInterface
+     */
+    protected $settings;
+
+    /**
+     * @param SettingsRepositoryInterface $settings
+     */
+    public function __construct(SettingsRepositoryInterface $settings)
+    {
+        $this->settings = $settings;
+    }
+
     public function subscribe(Dispatcher $events)
     {
         $events->listen(UserLoggedOut::class, [$this, 'addLogoutRedirect']);
@@ -14,7 +28,7 @@ class AddLogoutRedirect
 
     public function addLogoutRedirect()
     {
-        $url = 'https://lanport.ch/logout?forum=1';
+        $url = $this->settings->get('wuethrich44-sso.logout_url');
 
         header('Location: ' . $url);
         die();

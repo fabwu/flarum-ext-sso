@@ -23,7 +23,7 @@ System.register('wuethrich44/sso/components/SSOSettingsModal', ['flarum/componen
                 }, {
                     key: 'title',
                     value: function title() {
-                        return 'Test';
+                        return app.translator.trans('wuethrich44-sso.admin.settings.title');
                     }
                 }, {
                     key: 'form',
@@ -34,9 +34,9 @@ System.register('wuethrich44/sso/components/SSOSettingsModal', ['flarum/componen
                             m(
                                 'label',
                                 null,
-                                'Test'
+                                app.translator.trans('wuethrich44-sso.admin.settings.logout_url')
                             ),
-                            m('input', { className: 'FormControl', bidi: this.setting('flarum-auth-twitter.api_key') })
+                            m('input', {className: 'FormControl', bidi: this.setting('wuethrich44-sso.logout_url')})
                         )];
                     }
                 }]);
@@ -46,7 +46,7 @@ System.register('wuethrich44/sso/components/SSOSettingsModal', ['flarum/componen
             _export('default', SSOSettingsModal);
         }
     };
-});;
+});
 System.register("wuethrich44/sso/main", ["flarum/app", "wuethrich44/sso/components/SSOSettingsModal"], function (_export) {
     "use strict";
 

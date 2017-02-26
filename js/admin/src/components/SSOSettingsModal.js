@@ -6,14 +6,14 @@ export default class SSOSettingsModal extends SettingsModal {
     }
 
     title() {
-        return 'Test';
+        return app.translator.trans('wuethrich44-sso.admin.settings.title');
     }
 
     form() {
         return [
             <div className="Form-group">
-                <label>Test</label>
-                <input className="FormControl" bidi={this.setting('flarum-auth-twitter.api_key')}/>
+                <label>{app.translator.trans('wuethrich44-sso.admin.settings.logout_url')}</label>
+                <input className="FormControl" bidi={this.setting('wuethrich44-sso.logout_url')}/>
             </div>,
         ];
     }

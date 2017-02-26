@@ -1,0 +1,5 @@
+wuethrich44-sso:
+  admin:
+    settings:
+      title: "Single Sign On Settings"
+      logout_url: "Logout Url"
