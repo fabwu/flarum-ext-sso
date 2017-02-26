@@ -34,6 +34,15 @@ System.register('wuethrich44/sso/components/SSOSettingsModal', ['flarum/componen
                             m(
                                 'label',
                                 null,
+                                app.translator.trans('wuethrich44-sso.admin.settings.signup_url')
+                            ),
+                            m('input', {className: 'FormControl', bidi: this.setting('wuethrich44-sso.signup_url')})
+                        ), m(
+                            'div',
+                            {className: 'Form-group'},
+                            m(
+                                'label',
+                                null,
                                 app.translator.trans('wuethrich44-sso.admin.settings.login_url')
                             ),
                             m('input', {className: 'FormControl', bidi: this.setting('wuethrich44-sso.login_url')})

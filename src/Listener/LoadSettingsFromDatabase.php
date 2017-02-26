@@ -25,7 +25,9 @@ class LoadSettingsFromDatabase
     public function prepareApiAttributes(PrepareApiAttributes $event)
     {
         if ($event->isSerializer(ForumSerializer::class)) {
+            $event->attributes['wuethrich44-sso.signup_url'] = $this->settings->get('wuethrich44-sso.signup_url');
             $event->attributes['wuethrich44-sso.login_url'] = $this->settings->get('wuethrich44-sso.login_url');
+            $event->attributes['wuethrich44-sso.logout_url'] = $this->settings->get('wuethrich44-sso.logout_url');
         }
     }
 }

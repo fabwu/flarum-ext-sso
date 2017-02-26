@@ -12,6 +12,10 @@ export default class SSOSettingsModal extends SettingsModal {
     form() {
         return [
             <div className="Form-group">
+                <label>{app.translator.trans('wuethrich44-sso.admin.settings.signup_url')}</label>
+                <input className="FormControl" bidi={this.setting('wuethrich44-sso.signup_url')}/>
+            </div>,
+            <div className="Form-group">
                 <label>{app.translator.trans('wuethrich44-sso.admin.settings.login_url')}</label>
                 <input className="FormControl" bidi={this.setting('wuethrich44-sso.login_url')}/>
             </div>,

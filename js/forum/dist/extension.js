@@ -39,7 +39,7 @@ System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/
                         return;
                     }
 
-                    var signupUrl = 'http://lanport.intra/';
+                    var signupUrl = app.forum.data.attributes['wuethrich44-sso.signup_url'];
 
                     items.replace('signUp', m(
                         "a",
