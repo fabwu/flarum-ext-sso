@@ -20,5 +20,13 @@ class AddClientAssets
             ]);
             $event->addBootstrapper('wuethrich44/sso/main');
         }
+
+
+        if ($event->isAdmin()) {
+            $event->addAssets([
+                __DIR__ . '/../../js/admin/dist/extension.js'
+            ]);
+            $event->addBootstrapper('wuethrich44/sso/main');
+        }
     }
 }
