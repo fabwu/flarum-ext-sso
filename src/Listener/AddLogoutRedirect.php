@@ -8,14 +8,8 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class AddLogoutRedirect
 {
-    /**
-     * @var SettingsRepositoryInterface
-     */
     protected $settings;
 
-    /**
-     * @param SettingsRepositoryInterface $settings
-     */
     public function __construct(SettingsRepositoryInterface $settings)
     {
         $this->settings = $settings;

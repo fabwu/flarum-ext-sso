@@ -2,4 +2,5 @@ wuethrich44-sso:
   admin:
     settings:
       title: "Single Sign On Settings"
+      login_url: "Login Url"
       logout_url: "Logout Url"

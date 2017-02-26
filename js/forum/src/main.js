@@ -14,7 +14,7 @@ app.initializers.add('wuethrich44-sso', function () {
             return;
         }
 
-        let loginUrl = 'http://lanport.intra';
+        let loginUrl = app.forum.data.attributes['wuethrich44-sso.login_url'];
 
         items.replace('logIn',
             <a href={loginUrl} className="Button Button--link">

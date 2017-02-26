@@ -25,7 +25,7 @@ System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/
                         return;
                     }
 
-                    var loginUrl = 'http://lanport.intra';
+                    var loginUrl = app.forum.data.attributes['wuethrich44-sso.login_url'];
 
                     items.replace('logIn', m(
                         "a",
