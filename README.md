@@ -1,2 +1,1 @@
-# flarum-ext-sso
-Single Sign On for Flarum
+# Flarum Single Sign On

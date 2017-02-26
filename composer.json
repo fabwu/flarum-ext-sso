@@ -1,0 +1,35 @@
+{
+  "name": "wuethrich44/flarum-ext-sso",
+  "description": "Single Sign On for Flarum",
+  "type": "flarum-extension",
+  "keywords": [
+    "authentication"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fabian Wüthrich",
+      "email": "fabian.wuethrich@outlook.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/wuethrich44/flarum-ext-sso/issues",
+    "source": "https://github.com/wuethrich44/flarum-ext-sso"
+  },
+  "require": {
+    "flarum/core": "^0.1.0-beta.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wuethrich44\\SSO\\": "src/"
+    }
+  },
+  "extra": {
+    "flarum-extension": {
+      "title": "Single Sign On",
+      "icon": {
+        "name": "shield"
+      }
+    }
+  }
+}
