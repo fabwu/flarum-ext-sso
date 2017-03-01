@@ -1,6 +1,6 @@
 # Flarum Single Sign On
 
-This extension equip Flarum with Single Sign On. The workflow is based on this 
+This extension equips Flarum with Single Sign On. The workflow is based on this 
 [post](https://discuss.flarum.org/d/2808-how-i-implemented-cross-authentication-with-flarum).
 The extension is useful if you run Flarum on a subdomain but you want to use the login mechanism 
 of your main website. A dummy main website is provided in the `sample-website/` folder.
