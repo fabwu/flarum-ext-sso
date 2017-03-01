@@ -11,6 +11,12 @@ class Forum
         $this->config = require_once __DIR__ . '/config.php';
     }
 
+    /**
+     * Call this method after your user is successfully authenticated.
+     *
+     * @param $username
+     * @param $email
+     */
     public function login($username, $email)
     {
         $password = $this->createPassword($username);
@@ -24,11 +30,17 @@ class Forum
         $this->setRememberMeCookie($token);
     }
 
+    /**
+     * Call this method after you logged out your user.
+     */
     public function logout()
     {
         $this->removeRememberMeCookie();
     }
 
+    /**
+     * Redirects a user back to the forum.
+     */
     public function redirectToForum()
     {
         header('Location: ' . $this->config['flarum_url']);
@@ -37,7 +49,7 @@ class Forum
 
     private function createPassword($username)
     {
-        return password_hash($username . $this->config['password_token'], PASSWORD_DEFAULT);
+        return hash('sha256', $username . $this->config['password_token']);
     }
 
     private function getToken($username, $password)
