@@ -7,26 +7,19 @@ of your main website. A dummy main website is provided in the `sample-website/` 
 
 ## Installation
 
-1. Create a random token and put it into the `api_keys` table of
-your Flarum database.
+1. Create a random token and put it into the `api_keys` table of your Flarum database.
 
-2. Go into `sample-website` folder and copy `config.php.dist` to 
-`config.php`:
+2. Go into `sample-website` folder and copy `config.php.dist` to `config.php`:
+  ```
+  cd sample-website/
+  cp config.php.dist config.php
+  ```
+3. Open `config.php` with an editor of your choice and configure all settings.
 
-```
-cd sample-website/
-cp config.php.dist config.php
-```
-3. Open `config.php` with an editor of your choice and configure all 
-settings.
+4. Upload the `Forum.php` class and `config.php` to your main website and setup the `Forum.php` class. An example is given in `index.php` / `logout.php`.
 
-4. Upload the `Forum.php` class and `config.php` to your main website
-and setup the `Forum.php` class. An example is given in `index.php` / `logout.php`.
-
-5. Install and activate the extension. Fill in redirect urls for
-login, signup and logout.
-```
-composer require wuethrich44/flarum-ext-sso
-```
-6. Now you should able to log in with your existing users. Maybe it is necessary to attach the
-admin group in the database.
+5. Install and activate the extension. Fill in redirect urls for login, signup and logout.
+  ```
+  composer require wuethrich44/flarum-ext-sso
+  ```
+6. Now you should able to log in with your existing users.
