@@ -57,6 +57,7 @@ class Forum
         $data = [
             'identification' => $username,
             'password' => $password,
+            'lifetime' => 2592000 // 60*60*24*30
         ];
 
         $response = $this->sendPostRequest('/api/token', $data);
