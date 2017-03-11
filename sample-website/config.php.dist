@@ -8,4 +8,6 @@ return [
     'flarum_api_key' => 'NotSecureToken',
     // Random token to create passwords
     'password_token' => 'NotSecureToken',
+    // How many days should the login be valid
+    'lifetime_in_days' => 14,
 ];

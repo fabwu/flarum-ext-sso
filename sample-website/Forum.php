@@ -17,17 +17,17 @@ class Forum
      * @param $username
      * @param $email
      */
-    public function login($username, $email, $lifetime = 1209600 /* 60*60*24*14 */)
+    public function login($username, $email)
     {
         $password = $this->createPassword($username);
-        $token = $this->getToken($username, $password, $lifetime);
+        $token = $this->getToken($username, $password);
 
         if (empty($token)) {
             $this->signup($username, $password, $email);
-            $token = $this->getToken($username, $password, $lifetime);
+            $token = $this->getToken($username, $password);
         }
 
-        $this->setRememberMeCookie($token, $lifetime);
+        $this->setRememberMeCookie($token);
     }
 
     /**
@@ -52,12 +52,12 @@ class Forum
         return hash('sha256', $username . $this->config['password_token']);
     }
 
-    private function getToken($username, $password, $lifetime)
+    private function getToken($username, $password)
     {
         $data = [
             'identification' => $username,
             'password' => $password,
-            'lifetime' => $lifetime
+            'lifetime' => $this->getLifetimeInSeconds(),
         ];
 
         $response = $this->sendPostRequest('/api/token', $data);
@@ -102,9 +102,9 @@ class Forum
         return json_decode($result, true);
     }
 
-    private function setRememberMeCookie($token, $lifetime)
+    private function setRememberMeCookie($token)
     {
-        $this->setCookie(self::REMEMBER_ME_KEY, $token, time() + $lifetime);
+        $this->setCookie(self::REMEMBER_ME_KEY, $token, time() + $this->getLifetimeInSeconds());
     }
 
     private function removeRememberMeCookie()
@@ -116,5 +116,10 @@ class Forum
     private function setCookie($key, $token, $time)
     {
         setcookie($key, $token, $time, '/', $this->config['root_domain']);
+    }
+
+    private function getLifetimeInSeconds()
+    {
+        return $this->config['lifetime_in_days'] * 60 * 60 * 24;
     }
 }
