@@ -57,6 +57,7 @@ class Forum
         $data = [
             'identification' => $username,
             'password' => $password,
+            'lifetime' => $this->getLifetimeInSeconds(),
         ];
 
         $response = $this->sendPostRequest('/api/token', $data);
@@ -103,7 +104,7 @@ class Forum
 
     private function setRememberMeCookie($token)
     {
-        $this->setCookie(self::REMEMBER_ME_KEY, $token, strtotime('+30 days'));
+        $this->setCookie(self::REMEMBER_ME_KEY, $token, time() + $this->getLifetimeInSeconds());
     }
 
     private function removeRememberMeCookie()
@@ -115,5 +116,10 @@ class Forum
     private function setCookie($key, $token, $time)
     {
         setcookie($key, $token, $time, '/', $this->config['root_domain']);
+    }
+
+    private function getLifetimeInSeconds()
+    {
+        return $this->config['lifetime_in_days'] * 60 * 60 * 24;
     }
 }
