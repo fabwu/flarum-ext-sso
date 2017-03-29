@@ -23,3 +23,29 @@ of your main website. A dummy main website is provided in the `sample-website/` 
   composer require wuethrich44/flarum-ext-sso
   ```
 6. Now you should able to log in with your existing users.
+
+## Wordpress
+
+This extension comes with a Wordpress plugin which allows you to login into Wordpress and gain also access to your Flarum
+forum. In order to install the plugin execute the following steps:
+
+1. Upload the `sample-website` folder into the plugin folder (`/wp-content/plugins/`) of your wordpress instance.
+
+2. Rename it to a name of your choice (e.g. `flarum-sso`).
+
+3. Activate the plugin in the settings.
+
+4. Install and activate the Flarum extension.
+  ```
+  composer require wuethrich44/flarum-ext-sso
+  ```
+
+5. Fill in the correct urls according to your wordpress instance:
+   
+   Login-Url: `http://example.com/wp-login.php?redirect_to=forum` (The `redirect_to=forum` part is important as it will redirect your users back to the forum)
+   
+   Logout-Url: `http://example.com/wp-login.php?action=logout`
+   
+   Signup-Url: Depending on which plugin you use.
+
+6. That's it!
