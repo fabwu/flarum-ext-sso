@@ -24,3 +24,11 @@ function login($user_login, $user)
 }
 
 add_action('wp_login', 'login', 10, 2);
+
+function logout()
+{
+    $forum = new Forum();
+    $forum->logout();
+}
+
+add_action('wp_logout', 'logout');
