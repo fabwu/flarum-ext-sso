@@ -42,10 +42,12 @@ forum. In order to install the plugin execute the following steps:
 
 5. Fill in the correct urls according to your wordpress instance:
    
-   Login-Url: `http://example.com/wp-login.php?redirect_to=forum` (The `redirect_to=forum` part is important as it will redirect your users back to the forum)
+   **Login-Url**: `http://example.com/wp-login.php?redirect_to=forum` 
    
-   Logout-Url: `http://example.com/wp-login.php?action=logout`
+   (The `redirect_to=forum` part is important as it will redirect your users back to the forum)
    
-   Signup-Url: Depending on which plugin you use.
+   **Logout-Url**: `http://example.com/wp-login.php?action=logout`
+   
+   **Signup-Url**: Depending on which plugin you use.
 
 6. That's it!
