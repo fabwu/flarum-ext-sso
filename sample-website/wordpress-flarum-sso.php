@@ -5,30 +5,35 @@ Plugin Name: Flarum Single Sign On
 
 require_once __DIR__ . '/Forum.php';
 
-function my_login_redirect($redirect_to, $request, $user)
+$flarum = new Forum();
+
+function flarum_sso_login_redirect($redirect_to, $request, $user)
 {
+    global $flarum;
+
     if ($redirect_to === 'forum' && $user instanceof WP_User) {
-        $forum = new Forum();
-        $forum->redirectToForum();
+        $flarum->redirectToForum();
     }
 
     return $redirect_to;
 }
 
-add_filter('login_redirect', 'my_login_redirect', 10, 3);
+add_filter('login_redirect', 'flarum_sso_login_redirect', 10, 3);
 
-function login($user_login, $user)
+function flarum_sso_login($user_login, $user)
 {
-    $forum = new Forum();
-    $forum->login($user->user_login, $user->user_email);
+    global $flarum;
+
+    $flarum->login($user->user_login, $user->user_email);
 }
 
-add_action('wp_login', 'login', 10, 2);
+add_action('wp_login', 'flarum_sso_login', 10, 2);
 
-function logout()
+function flarum_sso_logout()
 {
-    $forum = new Forum();
-    $forum->logout();
+    global $flarum;
+
+    $flarum->logout();
 }
 
-add_action('wp_logout', 'logout');
+add_action('wp_logout', 'flarum_sso_logout');
