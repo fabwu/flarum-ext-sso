@@ -8,7 +8,7 @@ class Forum
 
     public function __construct()
     {
-        $this->config = require_once __DIR__ . '/config.php';
+        $this->config = require __DIR__ . '/config.php';
     }
 
     /**
