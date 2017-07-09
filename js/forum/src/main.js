@@ -1,13 +1,21 @@
-import {extend} from "flarum/extend";
+import {extend, override} from "flarum/extend";
 import app from "flarum/app";
 import HeaderSecondary from "flarum/components/HeaderSecondary";
 import SettingsPage from "flarum/components/SettingsPage";
+import LogInModal from "flarum/components/LogInModal";
 
 app.initializers.add('wuethrich44-sso', function () {
+    override(LogInModal.prototype, 'init', redirectWhenLoginModalIsOpened);
+
     extend(HeaderSecondary.prototype, 'items', replaceLoginButton);
     extend(HeaderSecondary.prototype, 'items', replaceSignupButton);
 
     extend(SettingsPage.prototype, 'accountItems', removeProfileActions);
+
+    function redirectWhenLoginModalIsOpened() {
+        window.location.href = app.forum.data.attributes['wuethrich44-sso.login_url'];
+        throw new Error('Stop execution');
+    }
 
     function replaceLoginButton(items) {
         if (!items.has('logIn')) {

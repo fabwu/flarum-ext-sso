@@ -1,24 +1,34 @@
-System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/components/HeaderSecondary", "flarum/components/SettingsPage"], function (_export) {
+System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/components/HeaderSecondary", "flarum/components/SettingsPage", "flarum/components/LogInModal"], function (_export) {
     "use strict";
 
-    var extend, app, HeaderSecondary, SettingsPage;
+    var extend, override, app, HeaderSecondary, SettingsPage, LogInModal;
     return {
         setters: [function (_flarumExtend) {
             extend = _flarumExtend.extend;
+            override = _flarumExtend.override;
         }, function (_flarumApp) {
             app = _flarumApp["default"];
         }, function (_flarumComponentsHeaderSecondary) {
             HeaderSecondary = _flarumComponentsHeaderSecondary["default"];
         }, function (_flarumComponentsSettingsPage) {
             SettingsPage = _flarumComponentsSettingsPage["default"];
+        }, function (_flarumComponentsLogInModal) {
+            LogInModal = _flarumComponentsLogInModal["default"];
         }],
         execute: function () {
 
             app.initializers.add('wuethrich44-sso', function () {
+                override(LogInModal.prototype, 'init', redirectWhenLoginModalIsOpened);
+
                 extend(HeaderSecondary.prototype, 'items', replaceLoginButton);
                 extend(HeaderSecondary.prototype, 'items', replaceSignupButton);
 
                 extend(SettingsPage.prototype, 'accountItems', removeProfileActions);
+
+                function redirectWhenLoginModalIsOpened() {
+                    window.location.href = app.forum.data.attributes['wuethrich44-sso.login_url'];
+                    throw new Error('Stop execution');
+                }
 
                 function replaceLoginButton(items) {
                     if (!items.has('logIn')) {
