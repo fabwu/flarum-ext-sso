@@ -33,14 +33,16 @@ forum. In order to install the plugin execute the following steps:
 
 2. Rename it to a name of your choice (e.g. `flarum-sso`).
 
-3. Activate the plugin in the settings.
+3. Copy `config.php.dist` to `config.php` and configure all settings.
 
-4. Install and activate the Flarum extension.
+4. Activate the plugin in the settings.
+
+5. Install and activate the Flarum extension.
   ```
   composer require wuethrich44/flarum-ext-sso
   ```
 
-5. Fill in the correct urls according to your wordpress instance:
+6. Fill in the correct urls according to your wordpress instance:
    
    **Login-Url**: `http://example.com/wp-login.php?redirect_to=forum` 
    
@@ -50,4 +52,4 @@ forum. In order to install the plugin execute the following steps:
    
    **Signup-Url**: Depending on which plugin you use.
 
-6. That's it!
+7. That's it!
