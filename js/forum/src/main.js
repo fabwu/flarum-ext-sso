@@ -11,6 +11,7 @@ app.initializers.add('wuethrich44-sso', function () {
     extend(HeaderSecondary.prototype, 'items', replaceSignupButton);
 
     extend(SettingsPage.prototype, 'accountItems', removeProfileActions);
+    extend(SettingsPage.prototype, 'settingsItems', checkRemoveAccountSection);
 
     function redirectWhenLoginModalIsOpened() {
         window.location.href = app.forum.data.attributes['wuethrich44-sso.login_url'];
@@ -48,5 +49,26 @@ app.initializers.add('wuethrich44-sso', function () {
     function removeProfileActions(items) {
         items.remove('changeEmail');
         items.remove('changePassword');
+    }
+
+    function checkRemoveAccountSection(items) {
+        if (items.has('account')) {
+            var accountItemList = items.get('account');
+            
+            if (typeof accountItemList.isEmpty == 'function') {
+                if (accountItemList.isEmpty()) {
+                    items.remove('account');
+                }
+            } else {
+                // Emulate isEmpty function
+                for (var prop in accountItemList.items) {
+                    if (accountItemList.items.hasOwnProperty(prop)) {
+                        return;
+                    }
+                }
+
+                items.remove('account');
+            }
+        }
     }
 });
