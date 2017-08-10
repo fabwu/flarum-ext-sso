@@ -52,23 +52,9 @@ app.initializers.add('wuethrich44-sso', function () {
     }
 
     function checkRemoveAccountSection(items) {
-        if (items.has('account')) {
-            var accountItemList = items.get('account');
-            
-            if (typeof accountItemList.isEmpty == 'function') {
-                if (accountItemList.isEmpty()) {
-                    items.remove('account');
-                }
-            } else {
-                // Emulate isEmpty function
-                for (var prop in accountItemList.items) {
-                    if (accountItemList.items.hasOwnProperty(prop)) {
-                        return;
-                    }
-                }
-
-                items.remove('account');
-            }
+        if (items.has('account')
+            && items.get('account').props.children.length === 0) {
+            items.remove('account');
         }
     }
 });
