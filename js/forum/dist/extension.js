@@ -24,6 +24,7 @@ System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/
                 extend(HeaderSecondary.prototype, 'items', replaceSignupButton);
 
                 extend(SettingsPage.prototype, 'accountItems', removeProfileActions);
+                extend(SettingsPage.prototype, 'settingsItems', checkRemoveAccountSection);
 
                 function redirectWhenLoginModalIsOpened() {
                     window.location.href = app.forum.data.attributes['wuethrich44-sso.login_url'];
@@ -61,6 +62,12 @@ System.register("wuethrich44/sso/main", ["flarum/extend", "flarum/app", "flarum/
                 function removeProfileActions(items) {
                     items.remove('changeEmail');
                     items.remove('changePassword');
+                }
+
+                function checkRemoveAccountSection(items) {
+                    if (items.has('account') && items.get('account').props.children.length === 0) {
+                        items.remove('account');
+                    }
                 }
             });
         }
