@@ -21,8 +21,7 @@ class Forum
     {
         if($password == ''){
 			$password = $this->createPassword($username);
-		}
-		
+        }
         $token = $this->getToken($username, $password);
 
         if (empty($token)) {
@@ -32,11 +31,11 @@ class Forum
 
         $this->setRememberMeCookie($token);
     }
-	
+    
     /**
      * Reset the password for forum user
      */
-	function resetPassword($username, $password){
+    function resetPassword($username, $password){
     	
     	$userObj = $this->getUserDetails($username);
     	$data = [
@@ -50,7 +49,7 @@ class Forum
         $response = $this->sendPatchRequest('/api/users/'. $userObj['data']['id'], $data);
     }
 
-	/**
+    /**
      * Call this method after you logged out your user.
      */
     public function logout()
@@ -122,10 +121,8 @@ class Forum
         return json_decode($result, true);
     }
 	
-	private function sendGetRequest($path)
+    private function sendGetRequest($path)
     {
-		echo $this->config['flarum_url'] . $path;
-		echo '<br>';
         $ch = curl_init($this->config['flarum_url'] . $path);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -139,10 +136,8 @@ class Forum
         return json_decode($result, true);
     }
 	
-	private function sendPatchRequest($path, $data)
+    private function sendPatchRequest($path, $data)
     {
-		echo $this->config['flarum_url'] . $path;
-		echo '<br>';
         $data_string = json_encode($data);
         $ch = curl_init($this->config['flarum_url'] . $path);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
@@ -179,7 +174,7 @@ class Forum
         return $this->config['lifetime_in_days'] * 60 * 60 * 24;
     }
 	
-	private function getUserDetails($username){
+    private function getUserDetails($username){
     	$response = $this->sendGetRequest('/api/users/'.$username);
     	return $response;
     }
