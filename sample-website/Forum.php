@@ -33,7 +33,7 @@ class Forum
         $this->setRememberMeCookie($token);
     }
 	
-	/**
+    /**
      * Reset the password for forum user
      */
 	function resetPassword($username, $password){
