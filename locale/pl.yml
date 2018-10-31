@@ -1,0 +1,7 @@
+wuethrich44-sso:
+  admin:
+    settings:
+      title: "Ustawienia logowania pojedynczego"
+      signup_url: "URL Rejestracji"
+      login_url: "URL Zaloguj"
+      logout_url: "URL Wyloguj"
