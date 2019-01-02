@@ -2,7 +2,7 @@
 
 namespace Wuethrich44\SSO\Listener;
 
-use Flarum\Event\UserLoggedOut;
+use Flarum\User\Event\LoggedOut;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 
@@ -17,7 +17,7 @@ class AddLogoutRedirect
 
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(UserLoggedOut::class, [$this, 'addLogoutRedirect']);
+        $events->listen(LoggedOut::class, [$this, 'addLogoutRedirect']);
     }
 
     public function addLogoutRedirect()
