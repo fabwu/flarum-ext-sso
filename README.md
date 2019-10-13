@@ -1,4 +1,6 @@
-# Flarum Single Sign On
+# DEPRECATED - Flarum Single Sign On
+
+(no longer actively maintained)
 
 This extension equips Flarum with Single Sign On. The workflow is based on this 
 [post](https://discuss.flarum.org/d/2808-how-i-implemented-cross-authentication-with-flarum).
